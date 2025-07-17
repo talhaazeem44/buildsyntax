@@ -1,0 +1,70 @@
+{
+  "hash": "5ba3d22e",
+  "configHash": "16b958f4",
+  "lockfileHash": "4d04ebb5",
+  "browserHash": "3fbe65e5",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "4ef3a8e5",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "2a3f7027",
+      "needsInterop": true
+    },
+    "framer-motion": {
+      "src": "../../node_modules/framer-motion/dist/es/index.mjs",
+      "file": "framer-motion.js",
+      "fileHash": "c4f8cec1",
+      "needsInterop": false
+    },
+    "react-tsparticles": {
+      "src": "../../node_modules/react-tsparticles/esm/index.js",
+      "file": "react-tsparticles.js",
+      "fileHash": "1ca4ab07",
+      "needsInterop": false
+    },
+    "tsparticles-preset-links": {
+      "src": "../../node_modules/tsparticles-preset-links/esm/index.js",
+      "file": "tsparticles-preset-links.js",
+      "fileHash": "cfa9cbbc",
+      "needsInterop": false
+    },
+    "gsap": {
+      "src": "../../node_modules/gsap/index.js",
+      "file": "gsap.js",
+      "fileHash": "aa1dc57a",
+      "needsInterop": false
+    },
+    "gsap/ScrollTrigger": {
+      "src": "../../node_modules/gsap/ScrollTrigger.js",
+      "file": "gsap_ScrollTrigger.js",
+      "fileHash": "dd61bf2d",
+      "needsInterop": false
+    },
+    "react-scroll": {
+      "src": "../../node_modules/react-scroll/modules/index.js",
+      "file": "react-scroll.js",
+      "fileHash": "daa0f96e",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-ZALO66MK": {
+      "file": "chunk-ZALO66MK.js"
+    },
+    "chunk-5HNGYYSW": {
+      "file": "chunk-5HNGYYSW.js"
+    },
+    "chunk-TVFQMRVC": {
+      "file": "chunk-TVFQMRVC.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
+    }
+  }
+}
