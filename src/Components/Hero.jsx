@@ -17,9 +17,9 @@ function Hero() {
   return (
     <section className="hero-multivideo">
       <div className="video-grid">
-          <video  autoPlay loop muted playsInline className="hero-video">
+          {/* <video  autoPlay loop muted playsInline className="hero-video">
           <source src="/videos/landing.mov" type="video/mp4" />
-        </video>
+        </video> */}
       {/* <video autoPlay loop muted playsInline className="hero-video">
           <source src="/videos/ladning2.mp4" type="video/mp4" />
         </video> */}
