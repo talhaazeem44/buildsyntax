@@ -19,11 +19,12 @@ function BackgroundParticles() {
           color: { value: "#0ff" },
           links: {
             enable: true,
-            color: "#0ff",
+            color: "white",
             distance: 150,
             opacity: 0.5,
             width: 1
           },
+          CollisionMode:"bounce",
           move: { enable: true, speed: 1 },
           size: { value: { min: 1, max: 3 } },
           shape: { type: "circle" },

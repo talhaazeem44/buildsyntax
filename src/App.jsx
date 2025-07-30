@@ -9,28 +9,18 @@ import BackgroundParticles from './Components/BackgroundParticles';
 import Headers from './Components/Headers';
 function App() {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1 }}
-      style={{
-        backgroundImage: "url('/bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <BackgroundParticles />
-      <div className="backdrop-blur-sm bg-black/70 min-h-screen">
-      <Headers/>
-        <Hero />
-        <Feature/>
-       
-        <Roadmap />
-        <Contact/>
-      </div>
-    </motion.div>
+   
+      <>
+   
+      <div className=" min-h-screen">
+      <Headers />
+      <Hero />
+      <Feature />
+      <Roadmap />
+      <Contact />
+    </div>
+    </>
+
   );
 }
 

@@ -1,43 +1,56 @@
-import React, { useEffect, useRef } from 'react';
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import "./Hero.css"; // Optional custom styling
 
+const Hero = () => {
+  const videos = [
+    "/videos/building.mp4",
+    "/videos/humanVr.mp4",
 
-function Hero() {
-  // const video2Ref = useRef(null);
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     if (video2Ref.current) {
-  //       video2Ref.current.play();
-  //     }
-  //   }, 5000); // 5 seconds delay
-
-  //   return () => clearTimeout(timer);
-  // }, []);
+  ];
 
   return (
-    <section className="hero-multivideo">
-      <div className="video-grid">
-          {/* <video  autoPlay loop muted playsInline className="hero-video">
-          <source src="/videos/landing.mov" type="video/mp4" />
-        </video> */}
-      {/* <video autoPlay loop muted playsInline className="hero-video">
-          <source src="/videos/ladning2.mp4" type="video/mp4" />
-        </video> */}
-        <div className="hero-overlay">
+    <><section className="hero-section">
+      <Carousel
+        autoPlay
+        interval={7000}
+        infiniteLoop
+        showThumbs={false}
+        showStatus={false}
+        showArrows={true}
+        swipeable={true}
+        emulateTouch={true}
+        stopOnHover={false}
+        dynamicHeight={false}
+      >
+        {videos.map((videoSrc, index) => (
+          <div key={index} className="video-slide">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="hero-video"
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          </div>
+        ))}
+      </Carousel>
+
+      {/* Overlay content stays fixed */}
+      <div className="hero-overlay">
         <h1 className="hero-heading">
-          We <br /> Reimagine <br /> Tomorrow
+          Build What Tomorrow <br /> Demands
         </h1>
         <p className="hero-subheading">
-          Driving growth and molding the future through transformative change
+          We develop intelligent, scalable solutions that future-proof your business from the inside out.
         </p>
         <button className="hero-btn">GET IN TOUCH</button>
       </div>
-  
-
- 
-      </div>
-    </section>
+    </section></>
   );
-}
+};
 
 export default Hero;

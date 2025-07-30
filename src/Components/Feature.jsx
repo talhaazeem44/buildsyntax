@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
+import BackgroundParticles from './BackgroundParticles';
 gsap.registerPlugin(ScrollTrigger);
 
 function Features() {
@@ -27,27 +28,30 @@ function Features() {
     {
       title: "Custom Web Apps",
       desc: "We build modern, responsive web applications tailored to your business needs.",
+      image: "/src/assets/img/uxui.jpg",
     },
     {
       title: "UI/UX Design",
       desc: "Interactive and stunning user experiences using cutting-edge design systems.",
+      image: "/src/assets/img/uxui.jpg",
     },
     {
-      title: "Motion & Animation",
-      desc: "Bring your interface to life with Framer Motion, Lottie, GSAP, and more.",
-    },
+      title: "Mobile App Development",
+      desc: "Quickly launch MVPs and working demos with cross-platform tools.",
+      image: "/src/assets/img/mobileapp.jpg",
+    },    
+
     {
       title: "E-Commerce",
       desc: "Build secure and scalable online stores that convert more visitors.",
+      image: "/src/assets/img/ecommerece.jpg",
     },
     {
       title: "SEO & Performance",
       desc: "Speed up your site and rank better with our optimization strategies.",
+      image: "/src/assets/img/seo.png",
     },
-    {
-      title: "Mobile App Prototypes",
-      desc: "Quickly launch MVPs and working demos with cross-platform tools.",
-    },
+
   ];
   
   const techStack = [
@@ -61,23 +65,32 @@ function Features() {
   ];
   
   return (
-    <section className=" features">
-      <h1 className="d-flex justify-content-center">Our Services</h1>
-      <div className="features-grid">
-  {services.map((item, i) => (
-    <motion.div
-      key={i}
-      className="feature-card"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: i * 0.15 }}
-    >
-      <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-      <p className="text-sm text-gray-700">{item.desc}</p>
-    </motion.div>
-  ))}
-</div>
-<div className="tech-carousel">
+    
+    <section className="services-section">
+<BackgroundParticles />
+    <div className="services-header">
+      <p className="services-subtitle">OUR SERVICES</p>
+      <h1 className="services-title">Transform Your Business</h1>
+    </div>
+  
+    <div className="services-grid">
+      {services.map((service, i) => (
+        <motion.div
+          key={i}
+          className="service-card"
+          ref={(el) => (cardsRef.current[i] = el)}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: i * 0.2 }}
+        >
+          <img src={service.image} alt={service.title} className="service-img" />
+          <div className="service-title-overlay">
+            <h3>{service.title}</h3>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+    <div className="tech-carousel">
   <div className="tech-track">
     {techStack.concat(techStack).map((tech, i) => (
       <div className="tech-item" key={i}>
@@ -87,8 +100,13 @@ function Features() {
     ))}
   </div>
 </div>
-
-    </section>
+    <div className="view-more-btn-container">
+      <button className="view-more-btn">View More Services ↓</button>
+    </div>
+  
+    <div className="talk-tab">Let's Talk Business</div>
+  </section>
+  
   );
 }
 
