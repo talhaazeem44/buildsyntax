@@ -1,17 +1,62 @@
-import React from 'react';
-import { Link } from 'react-scroll'; // smooth scroll to sections
-import Logo from "../assets/img/WhiteFavicon.svg"
+import React, { useState } from 'react';
+import { Link } from 'react-scroll';
+import { useNavigate, useLocation } from 'react-router-dom';
+import Logo from "../assets/img/WhiteFavicon.svg";
+
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isHomePage = location.pathname === '/';
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleNavClick = (path) => {
+    navigate(path);
+    setIsMenuOpen(false);
+  };
+
   return (
-    
     <header className="dashboard-header">
-      <img src={Logo} height={100} width={100}/>
-      <nav className="nav-links">
-        <Link to="home" smooth={true} duration={500}>Home</Link>
-        <Link to="about" smooth={true} duration={500}>About</Link>
-        <Link to="services" smooth={true} duration={500}>Services</Link>
-        <Link to="contact" smooth={true} duration={500}>Contact Us</Link>
+      <div className="logo-container" onClick={() => handleNavClick('/')}>
+        <img src={Logo} alt="Build Syntax" />
+        <span className="logo-text">Build Syntax</span>
+      </div>
+      
+      <nav className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+        {isHomePage ? (
+          <>
+            <Link to="home" smooth={true} duration={500}>Home</Link>
+            <span onClick={() => handleNavClick('/about')}>About</span>
+            <Link to="services" smooth={true} duration={500}>Services</Link>
+            <Link to="contact" smooth={true} duration={500}>Contact</Link>
+          </>
+        ) : (
+          <>
+            <span onClick={() => handleNavClick('/')}>Home</span>
+            <span onClick={() => handleNavClick('/about')}>About</span>
+            <span onClick={() => handleNavClick('/')}>Services</span>
+            <span onClick={() => handleNavClick('/contact')}>Contact</span>
+          </>
+        )}
+        <button 
+          className="get-started-btn"
+          onClick={() => handleNavClick('/contact')}
+        >
+          Get Started
+        </button>
       </nav>
+
+      <button
+        className="mobile-menu-btn"
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        {isMenuOpen ? '✕' : '☰'}
+      </button>
     </header>
   );
 }

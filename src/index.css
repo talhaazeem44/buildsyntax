@@ -95,10 +95,7 @@ body {
   background: #fdfcf7;
 }
 
-.neon-text-green {
-  color: #39ff14;
-  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
-}
+
 
 .features-grid {
   display: grid;
@@ -173,10 +170,6 @@ html, body {
 
 .backdrop-blur-sm {
   backdrop-filter: blur(6px);
-}
-.neon-text {
-  color: #00f2ff;
-  text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, 0 0 20px #00f2ff;
 }
 
 .neon-button {
@@ -274,15 +267,14 @@ html, body {
   transition: all 0.6s ease-out;
 }
 .dashboard-header {
-  position: fixed;
-  top: 0;
+  position: relative;
   width: 100%;
   padding: 1rem 2rem;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 999;
   box-sizing: border-box;
   font-family: "Audiowide", sans-serif;
@@ -298,6 +290,161 @@ html, body {
 .nav-links {
   display: flex;
   gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a,
+.nav-links span {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+  cursor: pointer;
+  color: white;
+}
+
+.nav-links a::after,
+.nav-links span::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #00c8b3;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links span:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links span:hover {
+  color: #00c8b3;
+}
+
+.get-started-btn {
+  background: linear-gradient(to right, #00c8b3, #00f2ff);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.get-started-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 200, 179, 0.3);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo-container img {
+  height: 50px;
+  width: 50px;
+}
+
+.logo-text {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00c8b3;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a,
+  .nav-links span {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  .logo-container img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .get-started-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header {
+    padding: 0.75rem;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+
+  .logo-container img {
+    height: 35px;
+    width: 35px;
+  }
+
+  .nav-links {
+    padding: 0.75rem;
+  }
+
+  .nav-links a,
+  .nav-links span {
+    font-size: 0.9rem;
+  }
 }
 .video-grid {
   display: grid;
