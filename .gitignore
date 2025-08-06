@@ -25,3 +25,8 @@ dist-ssr
 
 # Local Netlify folder
 .netlify
+# Prevent large files
+*.mov
+*.mp4
+*.webm
+public/videos/*
