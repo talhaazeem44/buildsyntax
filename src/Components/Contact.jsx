@@ -42,8 +42,8 @@ function Contact() {
     {
       icon: '📧',
       title: 'Email Us',
-      detail: 'hello@buildsyntax.com',
-      link: 'mailto:hello@buildsyntax.com'
+      detail: 'info@buildsyntax.com',
+      link: 'mailto:info@buildsyntax.com'
     },
     {
       icon: '📞',
@@ -54,15 +54,10 @@ function Contact() {
     {
       icon: '📍',
       title: 'Visit Us',
-      detail: '123 Tech Street, Digital City, DC 12345',
+      detail: 'Lahore,Pakistan',
       link: '#'
     },
-    {
-      icon: '⏰',
-      title: 'Business Hours',
-      detail: 'Mon-Fri: 9AM-6PM EST',
-      link: '#'
-    }
+
   ];
 
   const services = [
@@ -109,7 +104,13 @@ function Contact() {
             Ready to transform your business? Let's discuss your project and create something amazing together.
           </p>
         </motion.div>
-
+        <h3 style={{ fontSize: '1.8rem', fontWeight: 'bold', color: 'white', marginBottom: '2rem' }}>
+              Let's Start a Conversation
+            </h3>
+            <p style={{ color: '#e5e5e5', lineHeight: '1.6', marginBottom: '2rem' }}>
+              Whether you have a project in mind or just want to explore possibilities, <br /> 
+              we're here to help. Reach out and let's build something extraordinary together.
+            </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '3rem' }}>
           
           {/* Contact Information */}
@@ -118,13 +119,7 @@ function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 style={{ fontSize: '1.8rem', fontWeight: 'bold', color: 'white', marginBottom: '2rem' }}>
-              Let's Start a Conversation
-            </h3>
-            <p style={{ color: '#e5e5e5', lineHeight: '1.6', marginBottom: '2rem' }}>
-              Whether you have a project in mind or just want to explore possibilities, 
-              we're here to help. Reach out and let's build something extraordinary together.
-            </p>
+    
 
             {/* Contact Info Cards */}
             <div style={{ display: 'grid', gap: '1rem' }}>
@@ -221,8 +216,8 @@ function Contact() {
                 Send us a Message
               </h3>
               
-              <form onSubmit={handleSubmit}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+              <form className='' onSubmit={handleSubmit}>
+                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
                   <input
                     type="text"
                     name="name"
@@ -279,7 +274,7 @@ function Contact() {
                   />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
                   <input
                     type="tel"
                     name="phone"
@@ -373,7 +368,7 @@ function Contact() {
                   required
                   rows="5"
                   style={{
-                    width: '100%',
+                    width: '95%',
                     padding: '0.75rem',
                     borderRadius: '8px',
                     border: '1px solid #333',

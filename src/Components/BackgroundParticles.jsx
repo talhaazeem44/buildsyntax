@@ -15,14 +15,16 @@ function BackgroundParticles() {
       options={{
         fullScreen: { enable: true, zIndex: -1 },
         particles: {
-          number: { value: 80 },
+          number: { value: 30 },
           color: { value: "#0ff" },
           links: {
             enable: true,
             color: "white",
-            distance: 150,
-            opacity: 0.5,
-            width: 1
+            distance: 100,
+            opacity: 1,
+            width: 0.5  ,
+            
+       
           },
           CollisionMode:"bounce",
           move: { enable: true, speed: 1 },

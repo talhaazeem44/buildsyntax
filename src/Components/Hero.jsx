@@ -2,14 +2,18 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 // import "./Hero.css"; // Optional custom styling
-
+import { useNavigate } from "react-router-dom";
 const Hero = () => {
+  const navigate = useNavigate();
   const videos = [
-    "/videos/aivideo.mp4",
     "/videos/khopri.mp4",
+    "/videos/aivideo.mp4",
 
   ];
-
+  const handleNavClick = (path) => {
+    navigate(path);
+    setIsMenuOpen(false);
+  };
   return (
     <><section className="hero-section">
       <Carousel
@@ -47,7 +51,7 @@ const Hero = () => {
         <p className="hero-subheading">
           We develop intelligent, scalable solutions that future-proof your business from the inside out.
         </p>
-        <button className="hero-btn">GET IN TOUCH</button>
+        <button className="hero-btn"onClick={() => handleNavClick('/contact')}>GET IN TOUCH</button>
       </div>
     </section></>
   );

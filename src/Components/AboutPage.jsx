@@ -40,32 +40,32 @@ function AboutPage() {
 
   const whyChooseUs = [
     {
-      icon: "✅",
+      // icon: "✅",
       title: "Tailored Solutions, Not Templates",
       description: "We don't believe in one-size-fits-all. Every project is customized to fit your business goals, industry, and audience."
     },
     {
-      icon: "🧠",
+      // icon: "🧠",
       title: "Experienced Minds, Modern Tools",
       description: "Our team blends years of hands-on development with today's most powerful technologies — delivering smart, scalable solutions."
     },
     {
-      icon: "🌟",
+      // icon: "🌟",
       title: "Premium Value, Skilled Professionals",
       description: "You're partnering with a team of top-tier engineers, designers, and strategists who bring premium quality and deep expertise."
     },
     {
-      icon: "🕐",
+      // icon: "🕐",
       title: "Speed Without Compromise",
       description: "We move fast — but never at the cost of quality. Our agile workflows ensure timely delivery while maintaining high performance."
     },
     {
-      icon: "🤝",
+      // icon: "🤝",
       title: "Transparent Communication",
       description: "We keep you in the loop at every step. Our collaboration-first approach ensures you're informed, involved, and confident."
     },
     {
-      icon: "🛠️",
+      // icon: "🛠️",
       title: "Full-Service Expertise",
       description: "From websites and mobile apps to branding, automation, and hosting — we're your all-in-one digital partner."
     }
