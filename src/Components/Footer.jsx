@@ -104,7 +104,7 @@ function Footer() {
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
                   <span style={{ marginRight: '0.5rem' }}>📧</span>
                   <a href="mailto:hello@buildsyntax.com" style={{ color: '#e5e5e5', textDecoration: 'none' }}>
-                    hello@buildsyntax.com
+                    info@buildsyntax.com
                   </a>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
@@ -115,7 +115,7 @@ function Footer() {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
                   <span style={{ marginRight: '0.5rem' }}>📍</span>
-                  <span>123 Tech Street, Digital City, DC 12345</span>
+                  <span>Lahore,Pakistan</span>
                 </div>
               </div>
             </div>

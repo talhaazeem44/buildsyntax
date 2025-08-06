@@ -78,7 +78,7 @@ function Contact() {
 
   return (
     <section style={{
-      background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)',
+    
       padding: '4rem 2rem',
       position: 'relative',
       overflow: 'hidden'
@@ -102,7 +102,7 @@ function Contact() {
           transition={{ duration: 0.6 }}
           style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
-          <h2 className="neon-text" style={{ fontSize: '3rem', marginBottom: '1rem', fontWeight: 'bold' }}>
+          <h2 className="" style={{ fontSize: '3rem', marginBottom: '1rem', fontWeight: 'bold' }}>
             Get In Touch
           </h2>
           <p style={{ fontSize: '1.2rem', color: '#e5e5e5', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}>

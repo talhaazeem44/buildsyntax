@@ -5,8 +5,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Hero = () => {
   const videos = [
-    "/videos/building.mp4",
-    "/videos/humanVr.mp4",
+    "/videos/aivideo.mp4",
+    "/videos/khopri.mp4",
 
   ];
 

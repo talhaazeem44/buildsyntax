@@ -96,7 +96,6 @@ body {
 }
 
 
-
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -172,6 +171,7 @@ html, body {
   backdrop-filter: blur(6px);
 }
 
+
 .neon-button {
   background-color: transparent;
   border: 2px solid #00f2ff;
@@ -212,10 +212,7 @@ html, body {
   color: #39ff14;
 }
 
-.neon-logo {
-  font-size: 5rem;
-  text-shadow: 0 0 5px rgb(0, 242, 255), 0 0 15px rgb(0, 242, 255), 0 0 30px rgb(0, 242, 255);
-}
+
 
 .hero-subtext {
   font-size: 1.5rem;
@@ -244,27 +241,231 @@ html, body {
 .roadmap-card:hover {
   transform: translateY(-6px) scale(1.03);
 }
-.neon-logo {
-  color: black;
-  text-shadow:
-    0 0 5px rgb(0, 242, 255),
-    0 0 10px rgb(0, 242, 255),
-    0 0 20px rgb(0, 242, 255),
-    0 0 40px rgb(0, 242, 255);
-  transition: text-shadow 0.5s ease-in-out;
-}
 
-.neon-logo:hover {
-  text-shadow:
-    0 0 10px rgb(0, 242, 255),
-    0 0 20px rgb(0, 242, 255),
-    0 0 40px rgb(0, 242, 255),
-    0 0 80px rgb(0, 242, 255);
-}
+
+
 .feature-card {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease-out;
+}
+
+/* Service Card Styles */
+.service-card {
+  height: 300px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.service-card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+  transition: filter 0.3s ease;
+}
+
+.service-card:hover img {
+  filter: brightness(80%);
+}
+
+.service-card .service-title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 10;
+  font-family: "Audiowide", sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 2rem 1.5rem 1.5rem;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-title-overlay {
+  transform: translateY(-10px);
+}
+
+.service-card .service-title-overlay h3 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #00c8b3;
+}
+
+.service-card .service-title-overlay p {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.9;
+  font-weight: normal;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.learn-more-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #00c8b3;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .learn-more-indicator {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.learn-more-indicator .arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .learn-more-indicator .arrow {
+  transform: translateX(5px);
+}
+
+/* Popup Modal Styles */
+.popup-modal {
+  position: fixed;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  border: 2px solid #00c8b3;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 200, 179, 0.3);
+  color: white;
+}
+
+.popup-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.popup-modal::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.popup-modal::-webkit-scrollbar-thumb {
+  background: #00c8b3;
+  border-radius: 3px;
+}
+
+.popup-modal::-webkit-scrollbar-thumb:hover {
+  background: #00f2ff;
+}
+
+/* Services Grid adjustments */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+  justify-content: center;
+  align-items: start;
+  padding: 2rem 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Mobile responsive for service cards */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  .service-card {
+    height: 250px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+    z-index: 50;
+  }
+  
+  .service-card .service-title-overlay h3 {
+    font-size: 1.1rem;
+  }
+  
+  .service-card .service-title-overlay p {
+    font-size: 0.8rem;
+  }
+  
+  .learn-more-indicator {
+    font-size: 0.8rem;
+  }
+  
+  .popup-modal {
+    max-width: 90vw;
+    left: 5vw !important;
+    right: 5vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0.5rem;
+  }
+  
+  .service-card {
+    height: 220px;
+    margin-bottom: 1rem;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    z-index: 25;
+  }
+  
+  .service-card .service-title-overlay {
+    padding: 1.5rem 1rem 1rem;
+  }
+  
+  .service-card .service-title-overlay h3 {
+    font-size: 1rem;
+  }
+  
+  .service-card .service-title-overlay p {
+    font-size: 0.75rem;
+  }
+  
+  .learn-more-indicator {
+    font-size: 0.75rem;
+  }
+  
+  .popup-modal {
+    max-width: 95vw;
+    left: 2.5vw !important;
+    right: 2.5vw;
+    padding: 1.5rem;
+  }
 }
 .dashboard-header {
   position: relative;

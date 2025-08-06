@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Headers from './Headers';
-
+import BackgroundParticles from './BackgroundParticles';
 function AboutPage() {
   const [activeTab, setActiveTab] = useState('story');
 
@@ -81,7 +81,7 @@ function AboutPage() {
   return (
     <div style={{ background: 'black', minHeight: '100vh' }}>
       <Headers />
-      
+      <BackgroundParticles />
       {/* Hero Section */}
       <section style={{ 
         padding: '8rem 2rem 4rem', 

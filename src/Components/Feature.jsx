@@ -1,35 +1,97 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import BackgroundParticles from './BackgroundParticles';
 gsap.registerPlugin(ScrollTrigger);
 
 function Features() {
   const cardsRef = useRef([]);
-  const [expandedService, setExpandedService] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    cardsRef.current.forEach((card, index) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: "top 80%",
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.6,
-        delay: index * 0.2,
-        ease: "power2.out",
-      });
+    // Clear any existing animations
+    cardsRef.current.forEach((card) => {
+      if (card) {
+        gsap.set(card, { clearProps: "all" });
+      }
     });
+
+    // Create new animations with better visibility
+    cardsRef.current.forEach((card, index) => {
+      if (card) {
+        gsap.fromTo(card, 
+          {
+            opacity: 0,
+            y: 50,
+            visibility: "hidden"
+          },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              end: "bottom 15%",
+              toggleActions: "play none none reverse"
+            },
+            opacity: 1,
+            y: 0,
+            visibility: "visible",
+            duration: 0.8,
+            delay: index * 0.1,
+            ease: "power2.out"
+          }
+        );
+      }
+    });
+
+    // Cleanup function
+    return () => {
+      cardsRef.current.forEach((card) => {
+        if (card) {
+          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        }
+      });
+    };
   }, []);
+
+  const handleCardHover = (index, event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const popupWidth = 400; // Estimated popup width
+    
+    let x = rect.left + rect.width / 2 - popupWidth / 2;
+    
+    // Ensure popup doesn't go off-screen
+    if (x < 20) x = 20;
+    if (x + popupWidth > viewportWidth - 20) {
+      x = viewportWidth - popupWidth - 20;
+    }
+    
+    setPopupPosition({
+      x: x,
+      y: rect.top - 20
+    });
+    setHoveredCard(index);
+  };
+
+  const handleCardLeave = () => {
+    setHoveredCard(null);
+  };
+
+  const handlePopupClick = (e) => {
+    e.stopPropagation();
+  };
+
+  const handleOutsideClick = () => {
+    setHoveredCard(null);
+  };
 
   const services = [
     {
       title: "Website Design & Development",
       desc: "We create custom, user-friendly websites tailored to your business needs. From eye-catching landing pages to full-fledged e-commerce platforms.",
-      image: "/src/assets/img/uxui.jpg", // Perfect for web design
+      image: "/src/assets/img/uxui.jpg", // Local: design/dev
       details: [
         "Custom Website Design (UI/UX focused)",
         "Responsive Web Development for mobile, tablet, and desktop",
@@ -44,7 +106,7 @@ function Features() {
     {
       title: "Website Maintenance & Support",
       desc: "We keep your website running smoothly with regular updates, backups, and quick fixes.",
-      image: "/src/assets/img/mobileapp.jpg", // Good for maintenance/support concept
+      image: "/src/assets/img/mobileapp.jpg", // Local: maintenance/support
       details: [
         "Regular updates and backups",
         "Bug and error fixing",
@@ -56,7 +118,7 @@ function Features() {
     {
       title: "SEO (Search Engine Optimization)",
       desc: "Boost your website's visibility with our comprehensive SEO services. We help you rank higher on search engines.",
-      image: "/src/assets/img/seo.png", // Perfect for SEO
+      image: "/src/assets/img/seo.png", // Local: SEO
       details: [
         "On-page SEO including meta tags and content structuring",
         "Technical SEO focusing on site speed and mobile optimization",
@@ -68,7 +130,7 @@ function Features() {
     {
       title: "Performance & Security Optimization",
       desc: "Improve your website's speed and security to provide a better user experience and protect your data.",
-      image: "/src/assets/img/mobileapp.jpg", // Good for performance/security concept
+      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop&crop=center", // Unsplash: server/security
       details: [
         "Speed optimization focusing on Core Web Vitals",
         "Image and asset compression",
@@ -80,7 +142,7 @@ function Features() {
     {
       title: "CMS & Platform Expertise",
       desc: "We work with a variety of content management systems and platforms to help you manage your website efficiently.",
-      image: "/src/assets/img/uxui.jpg", // Good for CMS/platform work
+      image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=800&h=600&fit=crop&crop=center", // Unsplash: CMS dashboard
       details: [
         "WordPress development",
         "Shopify customization",
@@ -92,7 +154,7 @@ function Features() {
     {
       title: "UI/UX Design",
       desc: "Enhance your user experience and interface with professionally crafted designs based on user behavior.",
-      image: "/src/assets/img/uxui.jpg", // Perfect for UI/UX design
+      image: "/src/assets/img/uxui.jpg", // Local: UI/UX
       details: [
         "Wireframing and prototyping",
         "Figma and Adobe XD designs",
@@ -104,7 +166,7 @@ function Features() {
     {
       title: "Digital Marketing Integration",
       desc: "Connect your website with powerful marketing tools to grow your audience and track your results.",
-      image: "/src/assets/img/seo.png", // Good for digital marketing
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=600&fit=crop&crop=center", // Unsplash: marketing
       details: [
         "Google Analytics and Search Console setup",
         "Facebook Pixel and Meta Ads tracking",
@@ -115,7 +177,7 @@ function Features() {
     {
       title: "Hosting & Domain Services",
       desc: "We offer full domain registration and hosting solutions to keep your website online and accessible.",
-      image: "/src/assets/img/mobileapp.jpg", // Good for hosting/domain concept
+      image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=800&h=600&fit=crop&crop=center", // Unsplash: servers
       details: [
         "Domain registration and management",
         "Hosting setup and migration",
@@ -126,7 +188,7 @@ function Features() {
     {
       title: "E-commerce Solutions",
       desc: "We help you build and optimize online stores that convert visitors into customers with streamlined processes.",
-      image: "/src/assets/img/ecommerece.jpg", // Perfect for e-commerce
+      image: "/src/assets/img/ecommerece.jpg", // Local: e-commerce
       details: [
         "Shopify and WooCommerce store setup",
         "Payment gateway integrations (Stripe, PayPal)",
@@ -138,7 +200,7 @@ function Features() {
     {
       title: "Custom Integrations & APIs",
       desc: "We develop custom APIs and third-party integrations to connect your website with external systems.",
-      image: "/src/assets/img/mobileapp.jpg", // Good for integrations/APIs
+      image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=800&h=600&fit=crop&crop=center", // Unsplash: code/API
       details: [
         "Payment gateway integration (Stripe, PayPal)",
         "API development and third-party system integrations",
@@ -149,7 +211,7 @@ function Features() {
     {
       title: "AI Solutions & Automation",
       desc: "Harness the power of artificial intelligence to transform your business operations and customer experience.",
-      image: "/src/assets/img/uxui.jpg", // Good for AI/automation concept
+      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop&crop=center", // Unsplash: AI/robot
       details: [
         "AI chatbot and virtual assistant development",
         "Machine learning model integration for smart data analysis",
@@ -161,7 +223,7 @@ function Features() {
     {
       title: "Training & Documentation",
       desc: "We provide comprehensive training and documentation to empower you and your team to manage your website.",
-      image: "/src/assets/img/mobileapp.jpg", // Good for training/documentation
+      image: "https://images.unsplash.com/photo-1513258496099-48168024aec0?w=800&h=600&fit=crop&crop=center", // Unsplash: training/docs
       details: [
         "Admin panel walkthroughs for clients",
         "Video tutorials and written documentation",
@@ -182,7 +244,7 @@ function Features() {
   ];
   
   return (
-    <section className="services-section">
+    <section id="services" className="services-section">
       <BackgroundParticles />
       <div className="services-header">
         <p className="services-subtitle">OUR SERVICES</p>
@@ -199,42 +261,28 @@ function Features() {
             key={i}
             className="service-card"
             ref={(el) => (cardsRef.current[i] = el)}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-            onClick={() => setExpandedService(expandedService === i ? null : i)}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            style={{ visibility: 'visible' }}
+            onMouseEnter={(event) => handleCardHover(i, event)}
+            onMouseLeave={handleCardLeave}
+            whileHover={{ 
+              scale: 1.05,
+              y: -10,
+              transition: { duration: 0.3 }
+            }}
           >
-            <img src={service.image} alt={service.title} className="service-img" />
-            <div className="service-title-overlay">
-              <h3>{service.title}</h3>
-              <p style={{ fontSize: '0.9rem', marginTop: '5px', opacity: '0.9' }}>{service.desc}</p>
-              
-              {expandedService === i && (
-                <motion.div 
-                  style={{
-                    background: 'rgba(0, 0, 0, 0.8)',
-                    borderRadius: '8px',
-                    padding: '15px',
-                    marginTop: '15px',
-                    borderLeft: '3px solid #00c8b3'
-                  }}
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                >
-                  <h4 style={{ color: '#00c8b3', fontSize: '1rem', fontWeight: 'bold', marginBottom: '10px' }}>What we offer:</h4>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                    {service.details.map((detail, index) => (
-                      <li key={index} style={{ color: '#e5e5e5', fontSize: '0.85rem', padding: '5px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                        ✓ {detail}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-              
-              <div style={{ color: '#00c8b3', fontSize: '0.9rem', fontWeight: 'bold', cursor: 'pointer', textAlign: 'center', padding: '10px', borderRadius: '5px', marginTop: '10px' }}>
-                {expandedService === i ? 'Show Less' : 'Learn More'}
+            <div className="service-card-content">
+              <img src={service.image} alt={service.title} />
+              <div className="service-title-overlay">
+                <h3>{service.title}</h3>
+                <p>{service.desc}</p>
+                <div className="learn-more-indicator">
+                  <span>Learn More</span>
+                  <span className="arrow">→</span>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -252,11 +300,144 @@ function Features() {
         </div>
       </div>
 
-      <div className="view-more-btn-container">
-        <button className="view-more-btn">View More Services ↓</button>
-      </div>
-  
-      <div className="talk-tab">Let's Talk Business</div>
+      <AnimatePresence>
+        {hoveredCard !== null && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={handleOutsideClick}
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'rgba(0, 0, 0, 0.3)',
+                zIndex: 999,
+                backdropFilter: 'blur(2px)'
+              }}
+            />
+            
+            {/* Popup Modal */}
+            <motion.div
+              className="popup-modal"
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.9 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              onClick={handlePopupClick}
+              style={{
+                position: 'fixed',
+                left: `${popupPosition.x}px`,
+                top: `${popupPosition.y}px`,
+                zIndex: 1000,
+                background: 'rgba(0, 0, 0, 0.95)',
+                backdropFilter: 'blur(10px)',
+                border: '2px solid #00c8b3',
+                borderRadius: '16px',
+                padding: '2rem',
+                maxWidth: '400px',
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 200, 179, 0.3)',
+                color: 'white'
+              }}
+            >
+            <div className="popup-header">
+              <h3 style={{ 
+                color: '#00c8b3', 
+                fontSize: '1.5rem', 
+                fontWeight: 'bold', 
+                marginBottom: '1rem',
+                fontFamily: '"Audiowide", sans-serif'
+              }}>
+                {services[hoveredCard].title}
+              </h3>
+              <button 
+                className="popup-close-btn"
+                onClick={() => setHoveredCard(null)}
+                style={{
+                  position: 'absolute',
+                  top: '1rem',
+                  right: '1rem',
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#00c8b3',
+                  fontSize: '1.5rem',
+                  cursor: 'pointer',
+                  padding: '0.5rem',
+                  borderRadius: '50%',
+                  width: '40px',
+                  height: '40px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = 'rgba(0, 200, 179, 0.2)';
+                  e.target.style.transform = 'scale(1.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'transparent';
+                  e.target.style.transform = 'scale(1)';
+                }}
+              >
+                ×
+              </button>
+            </div>
+            
+            <p style={{ 
+              color: '#e5e5e5', 
+              fontSize: '1rem', 
+              lineHeight: '1.6',
+              marginBottom: '1.5rem'
+            }}>
+              {services[hoveredCard].desc}
+            </p>
+            
+            <div className="popup-details">
+              <h4 style={{ 
+                color: '#00c8b3', 
+                fontSize: '1.1rem', 
+                fontWeight: 'bold',
+                marginBottom: '1rem'
+              }}>
+                What's Included:
+              </h4>
+              <ul style={{ 
+                listStyle: 'none', 
+                padding: 0, 
+                margin: 0,
+                maxHeight: '200px',
+                overflowY: 'auto'
+              }}>
+                {services[hoveredCard].details.map((detail, index) => (
+                  <li key={index} style={{
+                    color: '#e5e5e5',
+                    fontSize: '0.9rem',
+                    padding: '0.5rem 0',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '0.5rem'
+                  }}>
+                    <span style={{ 
+                      color: '#00c8b3', 
+                      fontWeight: 'bold',
+                      fontSize: '1rem'
+                    }}>✓</span>
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+                          </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
     </section>
   );
 }
