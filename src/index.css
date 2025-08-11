@@ -391,6 +391,23 @@ html, body {
 }
 
 /* Mobile responsive for service cards */
+@media (max-width: 1024px) {
+  .services-grid .flip-card.flipped .flip-card-inner {
+    width: 80vw;
+    max-width: 600px;
+    height: auto;
+    min-height: 320px;
+    max-height: 75vh;
+  }
+  
+  .flip-card-back {
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    font-size: 1.05rem;
+    max-width: 80vw;
+    min-height: 320px;
+  }
+}
+
 @media (max-width: 768px) {
   .services-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -424,6 +441,42 @@ html, body {
     max-width: 90vw;
     left: 5vw !important;
     right: 5vw;
+  }
+  
+  /* Mobile responsive for flip cards */
+  .services-grid .flip-card.flipped {
+    padding: 1rem;
+  }
+  
+  .services-grid .flip-card.flipped .flip-card-inner {
+    width: 90vw;
+    max-width: 400px;
+    height: auto;
+    min-height: 300px;
+    max-height: 80vh;
+  }
+  
+  .flip-card-back {
+    padding: 1.5rem 1rem 1rem 1rem;
+    font-size: 1rem;
+    max-width: 90vw;
+    min-height: 300px;
+  }
+  
+  .flip-card-back h3 {
+    font-size: 1.3rem;
+  }
+  
+  .flip-card-back h4 {
+    font-size: 1rem;
+  }
+  
+  .flip-card-back ul {
+    max-height: 100px;
+  }
+  
+  .flip-card-back li {
+    font-size: 0.9rem;
   }
 }
 
@@ -465,6 +518,49 @@ html, body {
     left: 2.5vw !important;
     right: 2.5vw;
     padding: 1.5rem;
+  }
+  
+  /* Mobile responsive for flip cards on very small screens */
+  .services-grid .flip-card.flipped {
+    padding: 0.5rem;
+  }
+  
+  .services-grid .flip-card.flipped .flip-card-inner {
+    width: 95vw;
+    max-width: 350px;
+    height: auto;
+    min-height: 280px;
+    max-height: 85vh;
+  }
+  
+  .flip-card-back {
+    padding: 1.25rem 0.75rem 0.75rem 0.75rem;
+    font-size: 0.95rem;
+    max-width: 95vw;
+    min-height: 280px;
+  }
+  
+  .flip-card-back h3 {
+    font-size: 1.2rem;
+  }
+  
+  .flip-card-back h4 {
+    font-size: 0.95rem;
+  }
+  
+  .flip-card-back ul {
+    max-height: 80px;
+  }
+  
+  .flip-card-back li {
+    font-size: 0.85rem;
+    padding: 0.25rem 0;
+  }
+  
+  .close-flip-btn {
+    font-size: 1.5rem;
+    top: 0.75rem;
+    right: 0.75rem;
   }
 }
 .dashboard-header {
@@ -957,6 +1053,9 @@ font-size: 1.25rem;
   top: 50%;
   transform: translate(-50%, -50%) rotateY(180deg);
   pointer-events: auto;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 .flip-card.flipped {
   z-index: 2000;
@@ -970,13 +1069,20 @@ font-size: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.5);
-  z-index: 2000;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  -webkit-backdrop-filter: blur(8px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .services-grid .flip-card.flipped .flip-card-inner {
   width: 500px;
   height: 350px;
   margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .close-flip-btn {
   position: absolute;
@@ -1010,6 +1116,27 @@ font-size: 1.25rem;
   margin: 0;
   max-height: 120px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #00c8b3 rgba(255, 255, 255, 0.1);
+}
+
+.flip-card-back ul::-webkit-scrollbar {
+  width: 4px;
+}
+
+.flip-card-back ul::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.flip-card-back ul::-webkit-scrollbar-thumb {
+  background: #00c8b3;
+  border-radius: 2px;
+}
+
+.flip-card-back ul::-webkit-scrollbar-thumb:hover {
+  background: #00f2ff;
 }
 .flip-card-back li {
   color: #e5e5e5;
@@ -1157,5 +1284,89 @@ font-size: 1.25rem;
   .why-choose-us-grid {
     grid-template-columns: 1fr;
     gap: 1.2rem;
+  }
+}
+
+/* Touch-friendly improvements for mobile devices */
+@media (max-width: 768px) {
+  .flip-card.feature-flip-card {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .flip-card-back {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  
+  .close-flip-btn {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Overrides: remove inner scroll on flip-card list */
+.flip-card-back ul {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 1024px) {
+  .services-grid .flip-card.flipped .flip-card-inner {
+    max-height: none !important;
+    height: auto;
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid .flip-card.flipped .flip-card-inner {
+    max-height: none !important;
+    height: auto;
+    min-height: 460px;
+  }
+  .flip-card-back ul { max-height: none !important; overflow: visible !important; }
+}
+
+@media (max-width: 480px) {
+  .services-grid .flip-card.flipped .flip-card-inner {
+    max-height: none !important;
+    height: auto;
+    min-height: 520px;
+  }
+  .flip-card-back ul { max-height: none !important; overflow: visible !important; }
+}
+
+/* Disable blur on flip overlay and use subtle dim only */
+.services-grid .flip-card.flipped {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Make "What's Included" adjustable within the card */
+.flip-card-back ul {
+  max-height: 220px !important;
+  overflow-y: auto !important;
+}
+
+@media (max-width: 1024px) {
+  .flip-card-back ul {
+    max-height: 30vh !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .flip-card-back ul {
+    max-height: 35vh !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .flip-card-back ul {
+    max-height: 40vh !important;
   }
 }

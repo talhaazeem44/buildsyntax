@@ -1,40 +1,40 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
+import linkedin from '../assets/img/linkedin.png';
 function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    {
-      name: 'Instagram',
-      icon: '📷',
-      url: 'https://instagram.com/buildsyntax',
-      color: '#E4405F'
-    },
+    // {
+    //   name: 'Instagram',
+    //   icon: '📷',
+    //   url: 'https://instagram.com/buildsyntax',
+    //   color: '#E4405F'
+    // },
     {
       name: 'LinkedIn',
-      icon: '💼',
-      url: 'https://linkedin.com/company/buildsyntax',
+      icon: <img src={linkedin} width={20} height={20} alt="LinkedIn" />,
+      url: 'https://www.linkedin.com/company/build-syntax',
       color: '#0077B5'
     },
-    {
-      name: 'Twitter',
-      icon: '🐦',
-      url: 'https://twitter.com/buildsyntax',
-      color: '#1DA1F2'
-    },
-    {
-      name: 'Facebook',
-      icon: '📘',
-      url: 'https://facebook.com/buildsyntax',
-      color: '#1877F2'
-    },
-    {
-      name: 'YouTube',
-      icon: '📺',
-      url: 'https://youtube.com/@buildsyntax',
-      color: '#FF0000'
-    }
+    // {
+    //   name: 'Twitter',
+    //   icon: '🐦',
+    //   url: 'https://twitter.com/buildsyntax',
+    //   color: '#1DA1F2'
+    // },
+    // {
+    //   name: 'Facebook',
+    //   icon: '📘',
+    //   url: 'https://facebook.com/buildsyntax',
+    //   color: '#1877F2'
+    // },
+    // {
+    //   name: 'YouTube',
+    //   icon: '📺',
+    //   url: 'https://youtube.com/@buildsyntax',
+    //   color: '#FF0000'
+    // }
   ];
 
   const quickLinks = [
@@ -58,7 +58,7 @@ function Footer() {
 
   return (
     <footer style={{
-      background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)',
+      // background: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)',
       color: 'white',
       padding: '4rem 2rem 2rem',
       position: 'relative',
@@ -109,8 +109,8 @@ function Footer() {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
                   <span style={{ marginRight: '0.5rem' }}>📞</span>
-                  <a href="tel:+1234567890" style={{ color: '#e5e5e5', textDecoration: 'none' }}>
-                    +1 (234) 567-890
+                  <a href="tel:+923311066573" style={{ color: '#e5e5e5', textDecoration: 'none' }}>
+                    +923311066573
                   </a>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
@@ -246,7 +246,7 @@ function Footer() {
               />
               <button style={{
                 padding: '0.75rem 1.5rem',
-                background: 'linear-gradient(to right, #00c8b3, #00f2ff)',
+                background: '#00c8b3',
                 border: 'none',
                 borderRadius: '8px',
                 color: 'white',
@@ -254,7 +254,7 @@ function Footer() {
                 cursor: 'pointer',
                 transition: 'all 0.3s ease'
               }}>
-                Subscribe
+                Connect with us
               </button>
             </div>
           </motion.div>

@@ -125,7 +125,7 @@ function About() {
         >
           {/* Our Story */}
           {activeTab === 'story' && (
-            <div style={{ background: 'rgba(255, 255, 255, 0.1)', borderRadius: '16px', padding: '2rem', border: '1px solid #333' }}>
+            <div style={{ background: 'rgba(255, 255, 255, 0.1)', borderRadius: '16px', padding: '2rem', border: '1px solid #00c8b3' }}>
               <h3 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'white', marginBottom: '1.5rem' }}>Discover Our Story</h3>
               <div style={{ color: '#e5e5e5', lineHeight: '1.8' }}>
                 <p style={{ marginBottom: '1.5rem' }}>
@@ -143,7 +143,7 @@ function About() {
                   infrastructure, Build Syntax is the silent engine behind their success — thoughtful, precise, 
                   and always future-focused.
                 </p>
-                <div style={{ background: 'linear-gradient(to right, #00c8b3, #00f2ff)', padding: '1.5rem', borderRadius: '12px' }}>
+                <div style={{ background: '#00c8b3', padding: '1.5rem', borderRadius: '12px' }}>
                   <p style={{ color: 'white', fontSize: '1.2rem', fontStyle: 'italic', fontWeight: 'bold' }}>
                     "Every line of code we write tells a story — one of innovation, growth, and impact."
                   </p>

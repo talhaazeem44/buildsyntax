@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 const Hero = () => {
   const navigate = useNavigate();
   const videos = [
-    "/videos/khopri.mp4",
-    "/videos/aivideo.mp4",
+    "/videos/skeleton.gif",
+    "/videos/connections.gif",
 
   ];
   const handleNavClick = (path) => {
@@ -30,15 +30,11 @@ const Hero = () => {
       >
         {videos.map((videoSrc, index) => (
           <div key={index} className="video-slide">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="hero-video"
-            >
-              <source src={videoSrc} type="video/mp4" />
-            </video>
+     <img
+  src={videoSrc}
+  className="hero-video"
+/>
+
           </div>
         ))}
       </Carousel>

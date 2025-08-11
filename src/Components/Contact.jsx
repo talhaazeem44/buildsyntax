@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-
+import linkedin from '../assets/img/linkedin.png';
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -48,14 +48,14 @@ function Contact() {
     {
       icon: '📞',
       title: 'Call Us',
-      detail: '+1 (234) 567-890',
-      link: 'tel:+1234567890'
+      detail: '+923311066573',
+      // link: '+923311066573'
     },
     {
       icon: '📍',
       title: 'Visit Us',
       detail: 'Lahore,Pakistan',
-      link: '#'
+      // link: '#'
     },
 
   ];
@@ -111,7 +111,7 @@ function Contact() {
               Whether you have a project in mind or just want to explore possibilities, <br /> 
               we're here to help. Reach out and let's build something extraordinary together.
             </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '3rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', justifyContent: 'center', alignItems: 'start' }}>
           
           {/* Contact Information */}
           <motion.div
@@ -172,30 +172,8 @@ function Contact() {
                 Follow Us
               </h4>
               <div style={{ display: 'flex', gap: '1rem' }}>
-                {['📷', '💼', '🐦', '📘', '📺'].map((icon, index) => (
-                  <motion.a
-                    key={index}
-                    href="#"
-                    style={{
-                      display: 'inline-block',
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '50%',
-                      background: 'rgba(255, 255, 255, 0.1)',
-                      color: 'white',
-                      textDecoration: 'none',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '1.2rem',
-                      transition: 'all 0.3s ease'
-                    }}
-                    whileHover={{ scale: 1.1, background: 'rgba(0, 200, 179, 0.2)' }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {icon}
-                  </motion.a>
-                ))}
+             
+             <img src={linkedin} width={20} height={20} alt="" />
               </div>
             </div>
           </motion.div>
@@ -217,7 +195,7 @@ function Contact() {
               </h3>
               
               <form className='' onSubmit={handleSubmit}>
-                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
                   <input
                     type="text"
                     name="name"
@@ -226,7 +204,7 @@ function Contact() {
                     onChange={handleInputChange}
                     required
                     style={{
-                      width: '100%',
+                      flex: '1 1 280px',
                       padding: '0.75rem',
                       borderRadius: '8px',
                       border: '1px solid #333',
@@ -253,7 +231,7 @@ function Contact() {
                     onChange={handleInputChange}
                     required
                     style={{
-                      width: '100%',
+                      flex: '1 1 280px',
                       padding: '0.75rem',
                       borderRadius: '8px',
                       border: '1px solid #333',
@@ -274,7 +252,7 @@ function Contact() {
                   />
                 </div>
 
-                <div style={{ display: 'flex', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
                   <input
                     type="tel"
                     name="phone"
@@ -282,7 +260,7 @@ function Contact() {
                     value={formData.phone}
                     onChange={handleInputChange}
                     style={{
-                      width: '100%',
+                      flex: '1 1 200px',
                       padding: '0.75rem',
                       borderRadius: '8px',
                       border: '1px solid #333',
@@ -308,7 +286,7 @@ function Contact() {
                     value={formData.company}
                     onChange={handleInputChange}
                     style={{
-                      width: '100%',
+                      flex: '1 1 200px',
                       padding: '0.75rem',
                       borderRadius: '8px',
                       border: '1px solid #333',
@@ -368,7 +346,7 @@ function Contact() {
                   required
                   rows="5"
                   style={{
-                    width: '95%',
+                    width: '100%',
                     padding: '0.75rem',
                     borderRadius: '8px',
                     border: '1px solid #333',

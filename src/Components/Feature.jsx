@@ -185,7 +185,7 @@ function Features() {
     {
       title: "Blockchain Solutions",
       desc: "Leverage blockchain technology for secure, transparent, and decentralized applications. We build smart contracts, DApps, and integrate blockchain into your business.",
-      image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ethereum/ethereum-original.svg",
+      image: "/src/assets/img/mobileapp.jpg",
       details: [
         "Smart contract development (Solidity, Ethereum)",
         "Decentralized application (DApp) development",
@@ -221,7 +221,7 @@ function Features() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveTech((prev) => (prev + 1) % techStack.length);
-    }, 2000); // Change logo every 2 seconds
+    }, 1000); // Change logo every 2 seconds
     return () => clearInterval(interval);
   }, [techStack.length]);
 
