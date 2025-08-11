@@ -145,7 +145,7 @@ function Features() {
     {
       title: "E-commerce Solutions",
       desc: "We help you build and optimize online stores that convert visitors into customers with streamlined processes.",
-      image: "/images/ecommerece.jpg",
+      image: "/src/assets/img/ecommerece.jpg",
       details: [
         "Shopify and WooCommerce store setup",
         "Payment gateway integrations (Stripe, PayPal)",
