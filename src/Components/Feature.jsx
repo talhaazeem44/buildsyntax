@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import BackgroundParticles from './BackgroundParticles';
 
+// Import images for better build optimization
+import mobileappImg from '../assets/img/mobileapp.jpg';
+import uxuiImg from '../assets/img/uxui.jpg';
+import ecommerceImg from '../assets/img/ecommerece.jpg';
+
 // Why Choose Us data
 const whyChooseUs = [
   {
@@ -58,7 +63,7 @@ function Features() {
     {
       title: "Website Maintenance & Support",
       desc: "We keep your website running smoothly with regular updates, backups, and quick fixes.",
-      image: "/src/assets/img/mobileapp.jpg",
+      image: mobileappImg,
       details: [
         "Regular updates and backups",
         "Bug and error fixing",
@@ -106,7 +111,7 @@ function Features() {
     {
       title: "UI/UX Design",
       desc: "Enhance your user experience and interface with professionally crafted designs based on user behavior.",
-      image: "/src/assets/img/uxui.jpg",
+      image: uxuiImg,
       details: [
         "Wireframing and prototyping",
         "Figma and Adobe XD designs",
@@ -140,7 +145,7 @@ function Features() {
     {
       title: "E-commerce Solutions",
       desc: "We help you build and optimize online stores that convert visitors into customers with streamlined processes.",
-      image: "/src/assets/img/ecommerece.jpg",
+      image: "/images/ecommerece.jpg",
       details: [
         "Shopify and WooCommerce store setup",
         "Payment gateway integrations (Stripe, PayPal)",
@@ -149,10 +154,10 @@ function Features() {
         "Ongoing support and updates"
       ]
     },
-    {
+        {
       title: "Custom Integrations & APIs",
       desc: "We develop custom APIs and third-party integrations to connect your website with external systems.",
-      image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=800&h=600&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&crop=center",
       details: [
         "Payment gateway integration (Stripe, PayPal)",
         "API development and third-party system integrations",
@@ -163,7 +168,7 @@ function Features() {
     {
       title: "AI Solutions & Automation",
       desc: "Harness the power of artificial intelligence to transform your business operations and customer experience.",
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop&crop=center",
       details: [
         "AI chatbot and virtual assistant development",
         "Machine learning model integration for smart data analysis",
@@ -175,7 +180,7 @@ function Features() {
     {
       title: "Training & Documentation",
       desc: "We provide comprehensive training and documentation to empower you and your team to manage your website.",
-      image: "https://images.unsplash.com/photo-1513258496099-48168024aec0?w=800&h=600&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop&crop=center",
       details: [
         "Admin panel walkthroughs for clients",
         "Video tutorials and written documentation",
@@ -185,7 +190,7 @@ function Features() {
     {
       title: "Blockchain Solutions",
       desc: "Leverage blockchain technology for secure, transparent, and decentralized applications. We build smart contracts, DApps, and integrate blockchain into your business.",
-      image: "/src/assets/img/mobileapp.jpg",
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop&crop=center",
       details: [
         "Smart contract development (Solidity, Ethereum)",
         "Decentralized application (DApp) development",
