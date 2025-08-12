@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 const Hero = () => {
   const navigate = useNavigate();
   const videos = [
-    "/videos/khopri.mp4",
     "/videos/aivideo.mp4",
+    "/videos/livecoding.mp4",
 
   ];
   const handleNavClick = (path) => {
