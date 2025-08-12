@@ -7,7 +7,7 @@ const Hero = () => {
   const navigate = useNavigate();
   const videos = [
     "/videos/aivideo.mp4",
-    "/videos/livecoding.mp4",
+    "/videos/coding.mp4",
 
   ];
   const handleNavClick = (path) => {
